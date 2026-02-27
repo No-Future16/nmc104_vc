@@ -184,8 +184,14 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                         const isHoliday = wNum === "Week 5" || wNum === "Week 12" || wNum === "Week 14";
                                         const isWorkersDay = wNum === "Week 10";
 
+                                        const d = new Date(`${week.frontmatter.date}, 2026`);
+                                        const today = new Date();
+                                        today.setHours(0, 0, 0, 0);
+                                        const isPast = d < today;
+
                                         let rowClass = "border-t-2 border-border-dark hover:bg-yellow/10 transition-colors";
                                         let badgeColor = "bg-purple text-white";
+                                        let textClass = "";
 
                                         if (isMidterm) {
                                             rowClass += " bg-orange/10 font-bold";
@@ -194,27 +200,37 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                             rowClass += " bg-gold/20 font-bold";
                                             badgeColor = "bg-gold text-text-dark";
                                         } else if (isWorkersDay) {
-                                            rowClass += " bg-red/5 text-gray-500 line-through decoration-red decoration-2";
+                                            rowClass += " bg-red/5 text-red-700";
                                             badgeColor = "bg-red text-white";
                                         } else if (isHoliday) {
-                                            rowClass += " bg-blue/5 text-gray-500 line-through decoration-blue decoration-2";
+                                            rowClass += " bg-blue/5 text-blue-700";
                                             badgeColor = "bg-blue text-white";
+                                        }
+
+                                        if (isPast) {
+                                            rowClass += " opacity-60 bg-gray-50";
+                                            textClass = "line-through decoration-2 decoration-gray-500 text-gray-500";
                                         }
 
                                         return (
                                             <tr key={week.slug} className={rowClass}>
-                                                <td className="p-4 font-bold border-r-2 border-border-dark/20 w-32">
+                                                <td className={`p-4 font-bold border-r-2 border-border-dark/20 w-32 ${textClass}`}>
                                                     <Link href={`/weeks/${week.slug}`}>
-                                                        <span className={`${badgeColor} w-24 text-center px-2 py-1 rounded inline-block text-sm border-2 border-border-dark cursor-pointer hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_var(--color-border-dark)] active:translate-y-0 active:shadow-none transition-all`}>
+                                                        <span className={`${badgeColor} w-24 text-center px-2 py-1 rounded inline-block text-sm border-2 border-border-dark cursor-pointer hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_var(--color-border-dark)] active:translate-y-0 active:shadow-none transition-all !no-underline`}>
                                                             {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
                                                         </span>
                                                     </Link>
                                                 </td>
-                                                <td className="p-4 font-mono font-bold text-sm border-r-2 border-border-dark/20 w-32">
+                                                <td className={`p-4 font-mono font-bold text-sm border-r-2 border-border-dark/20 w-32 ${textClass}`}>
                                                     {lang === 'tr' && week.frontmatter.date_tr ? week.frontmatter.date_tr : week.frontmatter.date}
                                                 </td>
-                                                <td className="p-4 font-medium">
+                                                <td className={`p-4 font-medium ${textClass}`}>
                                                     {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
+                                                    {(isHoliday || isWorkersDay) && (
+                                                        <span className={`ml-2 inline-block px-2 py-0.5 bg-gray-100 text-text-dark text-xs font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
+                                                            {lang === 'tr' ? '🌴 Tatil' : '🌴 No Class'}
+                                                        </span>
+                                                    )}
                                                 </td>
                                             </tr>
                                         );
@@ -241,10 +257,16 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                         const isHoliday = wNum === "Week 5" || wNum === "Week 12" || wNum === "Week 14";
                         const isWorkersDay = wNum === "Week 10";
 
+                        const d = new Date(`${week.frontmatter.date}, 2026`);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        const isPast = d < today;
+
                         let cardColor = "var(--color-purple)";
                         let badgeColor = "bg-purple text-white";
                         let dotColor = "bg-lime";
                         let hoverScale = "hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_var(--color-pink)]";
+                        let cardOpacity = isPast ? "opacity-60" : "opacity-100";
 
                         if (isMidterm) {
                             cardColor = "var(--color-orange)";
@@ -268,25 +290,32 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                             hoverScale = "hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--color-blue)]";
                         }
 
+                        let textClass = isPast ? "line-through text-gray-500" : "text-text-dark";
+
                         return (
-                            <div key={week.slug} id={week.slug} className="reveal relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                                <div className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-4 border-border-dark ${dotColor} absolute left-1 md:left-1/2 -translate-x-1/2 z-10 shadow-[2px_2px_0px_var(--color-border-dark)]`}></div>
+                            <div key={week.slug} id={week.slug} className={`reveal relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group ${cardOpacity}`}>
+                                <div className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-4 border-border-dark ${dotColor} absolute left-1 md:left-1/2 -translate-x-1/2 z-10 shadow-[2px_2px_0px_var(--color-border-dark)] ${isPast ? 'grayscale' : ''}`}></div>
 
                                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] ml-16 md:ml-0">
                                     <Link href={`/weeks/${week.slug}`} className="block relative focus-visible">
                                         <div className={`bg-white border-4 border-border-dark rounded-brutal p-6 transition-all ${hoverScale}`} style={{ boxShadow: `6px 6px 0px ${cardColor}` }}>
                                             <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
-                                                <span className={`${badgeColor} font-bold px-3 py-1 rounded-full border-2 border-border-dark text-sm inline-block shadow-[2px_2px_0px_var(--color-border-dark)]`}>
+                                                <span className={`${badgeColor} font-bold px-3 py-1 rounded-full border-2 border-border-dark text-sm inline-block shadow-[2px_2px_0px_var(--color-border-dark)] !no-underline`}>
                                                     {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
                                                 </span>
-                                                <span className={`text-sm font-bold text-text-dark ${isMidterm || isFinal || isWorkersDay || isHoliday ? 'bg-transparent' : 'bg-yellow'} px-2 py-1 rounded border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)]`}>
+                                                <span className={`text-sm font-bold ${isMidterm || isFinal || isWorkersDay || isHoliday ? 'bg-transparent' : 'bg-yellow'} px-2 py-1 rounded border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)] ${textClass}`}>
                                                     {lang === 'tr' && week.frontmatter.date_tr ? week.frontmatter.date_tr : week.frontmatter.date}
                                                 </span>
                                             </div>
-                                            <h3 className="text-2xl font-display font-bold mb-2">
+                                            <h3 className={`text-2xl font-display font-bold mb-2 ${isPast ? 'line-through text-gray-500' : ''}`}>
                                                 {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
+                                                {(isHoliday || isWorkersDay) && (
+                                                    <span className={`ml-2 inline-block px-2 py-0.5 bg-gray-100 text-text-dark text-xs font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
+                                                        {lang === 'tr' ? '🌴 Tatil' : '🌴 No Class'}
+                                                    </span>
+                                                )}
                                             </h3>
-                                            <p className="text-gray-700 mb-6 line-clamp-2">
+                                            <p className={`text-gray-700 mb-6 line-clamp-2 ${isPast ? 'line-through text-gray-400' : ''}`}>
                                                 {lang === 'tr' && week.frontmatter.description_tr ? week.frontmatter.description_tr : week.frontmatter.description}
                                             </p>
                                             <div className="inline-flex items-center gap-2 font-bold text-border-dark group-hover:text-pink transition-colors">
