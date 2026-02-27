@@ -212,6 +212,13 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                             textClass = "line-through decoration-2 decoration-gray-500 text-gray-500";
                                         }
 
+                                        let holidayText = lang === 'tr' ? 'Tatil' : 'No Class';
+                                        let holidayEmoji = '🌴';
+                                        if (wNum === "Week 5") { holidayEmoji = '🍬'; }
+                                        else if (wNum === "Week 10") { holidayEmoji = '👷'; }
+                                        else if (wNum === "Week 12") { holidayEmoji = '🐮'; }
+                                        else if (wNum === "Week 14") { holidayEmoji = '🎤'; holidayText = lang === 'tr' ? 'Sempozyum' : 'Symposium'; }
+
                                         return (
                                             <tr key={week.slug} className={rowClass}>
                                                 <td className={`p-4 font-bold border-r-2 border-border-dark/20 w-32 ${textClass}`}>
@@ -228,7 +235,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                                     {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
                                                     {(isHoliday || isWorkersDay) && (
                                                         <span className={`ml-2 inline-block px-2 py-0.5 bg-gray-100 text-text-dark text-xs font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
-                                                            {lang === 'tr' ? '🌴 Tatil' : '🌴 No Class'}
+                                                            {holidayEmoji} {holidayText}
                                                         </span>
                                                     )}
                                                 </td>
@@ -292,6 +299,13 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
 
                         let textClass = isPast ? "line-through text-gray-500" : "text-text-dark";
 
+                        let holidayText = lang === 'tr' ? 'Tatil' : 'No Class';
+                        let holidayEmoji = '🌴';
+                        if (wNum === "Week 5") { holidayEmoji = '🍬'; }
+                        else if (wNum === "Week 10") { holidayEmoji = '👷'; }
+                        else if (wNum === "Week 12") { holidayEmoji = '🐮'; }
+                        else if (wNum === "Week 14") { holidayEmoji = '🎤'; holidayText = lang === 'tr' ? 'Sempozyum' : 'Symposium'; }
+
                         return (
                             <div key={week.slug} id={week.slug} className={`reveal relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group ${cardOpacity}`}>
                                 <div className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-4 border-border-dark ${dotColor} absolute left-1 md:left-1/2 -translate-x-1/2 z-10 shadow-[2px_2px_0px_var(--color-border-dark)] ${isPast ? 'grayscale' : ''}`}></div>
@@ -311,7 +325,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                                 {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
                                                 {(isHoliday || isWorkersDay) && (
                                                     <span className={`ml-2 inline-block px-2 py-0.5 bg-gray-100 text-text-dark text-xs font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
-                                                        {lang === 'tr' ? '🌴 Tatil' : '🌴 No Class'}
+                                                        {holidayEmoji} {holidayText}
                                                     </span>
                                                 )}
                                             </h3>
