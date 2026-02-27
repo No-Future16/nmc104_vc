@@ -216,7 +216,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                         let holidayEmoji = '🌴';
                                         if (wNum === "Week 5") { holidayEmoji = '🍬'; }
                                         else if (wNum === "Week 10") { holidayEmoji = '👷'; }
-                                        else if (wNum === "Week 12") { holidayEmoji = '🎤'; holidayText = lang === 'tr' ? 'Sempozyum' : 'Symposium'; }
+                                        else if (wNum === "Week 12") { holidayEmoji = '🎤'; }
                                         else if (wNum === "Week 14") { holidayEmoji = '🐮'; }
 
                                         return (
@@ -303,7 +303,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                         let holidayEmoji = '🌴';
                         if (wNum === "Week 5") { holidayEmoji = '🍬'; }
                         else if (wNum === "Week 10") { holidayEmoji = '👷'; }
-                        else if (wNum === "Week 12") { holidayEmoji = '🎤'; holidayText = lang === 'tr' ? 'Sempozyum' : 'Symposium'; }
+                        else if (wNum === "Week 12") { holidayEmoji = '🎤'; }
                         else if (wNum === "Week 14") { holidayEmoji = '🐮'; }
 
                         return (
