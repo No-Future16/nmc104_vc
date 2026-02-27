@@ -1,7 +1,8 @@
 export const translations = {
     en: {
         nav_about: "About",
-        nav_timeline: "Timeline",
+        nav_schedule: "Schedule",
+        nav_timeline: "Roadmap",
         nav_tutorials: "Skill Tutorials",
         nav_assessment: "Assessment",
         nav_policies: "Course Policies",
@@ -70,7 +71,8 @@ export const translations = {
     },
     tr: {
         nav_about: "Hakkında",
-        nav_timeline: "Takvim",
+        nav_schedule: "Takvim",
+        nav_timeline: "Yol Haritası",
         nav_tutorials: "Yetenek Rehberleri",
         nav_assessment: "Değerlendirme",
         nav_policies: "Ders Politikaları",

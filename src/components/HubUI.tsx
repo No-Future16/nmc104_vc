@@ -57,6 +57,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                 {/* Desktop Menu */}
                 <div className="hidden xl:flex gap-6 font-bold text-sm items-center">
                     <a href="#about" className="hover:text-pink hover:underline decoration-2 underline-offset-4">{t("nav_about")}</a>
+                    <a href="#schedule" className="hover:text-pink hover:underline decoration-2 underline-offset-4">{t("nav_schedule" as TranslationKey)}</a>
                     <a href="#timeline" className="hover:text-pink hover:underline decoration-2 underline-offset-4">{t("nav_timeline")}</a>
                     <a href="#tutorials" className="hover:text-pink hover:underline decoration-2 underline-offset-4">{t("nav_tutorials")}</a>
                     <a href="#assessment" className="hover:text-pink hover:underline decoration-2 underline-offset-4">{t("nav_assessment")}</a>
@@ -86,6 +87,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                 {isMenuOpen && (
                     <div className="absolute top-full left-0 w-full bg-yellow border-b-4 border-border-dark py-4 px-6 flex flex-col gap-4 font-bold text-lg xl:hidden shadow-lg z-40">
                         <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-pink block">{t("nav_about")}</a>
+                        <a href="#schedule" onClick={() => setIsMenuOpen(false)} className="hover:text-pink block">{t("nav_schedule" as TranslationKey)}</a>
                         <a href="#timeline" onClick={() => setIsMenuOpen(false)} className="hover:text-pink block">{t("nav_timeline")}</a>
                         <a href="#tutorials" onClick={() => setIsMenuOpen(false)} className="hover:text-pink block">{t("nav_tutorials")}</a>
                         <a href="#assessment" onClick={() => setIsMenuOpen(false)} className="hover:text-pink block">{t("nav_assessment")}</a>
