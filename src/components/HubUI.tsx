@@ -126,17 +126,17 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                 <div className="max-w-5xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-display font-black mb-12 text-center md:text-left">{t("about_title")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <article className="reveal bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-purple)] transform -rotate-1 hover:rotate-0 transition-transform">
+                        <article className="reveal bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-purple)] transform -rotate-1 hover:rotate-0 transition-transform h-full flex flex-col">
                             <div className="text-5xl mb-4" aria-hidden="true">🧠</div>
                             <h3 className="text-2xl font-display font-bold mb-3">{t("about_t1")}</h3>
                             <p className="text-lg text-gray-700">{t("about_p1")}</p>
                         </article>
-                        <article className="reveal bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-pink)] transform rotate-1 hover:rotate-0 transition-transform md:mt-8">
+                        <article className="reveal bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-pink)] transform rotate-1 hover:rotate-0 transition-transform md:mt-8 h-full flex flex-col">
                             <div className="text-5xl mb-4" aria-hidden="true">🛠️</div>
                             <h3 className="text-2xl font-display font-bold mb-3">{t("about_t2")}</h3>
                             <p className="text-lg text-gray-700">{t("about_p2")}</p>
                         </article>
-                        <article className="reveal bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-lime)] transform -rotate-1 hover:rotate-0 transition-transform">
+                        <article className="reveal bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-lime)] transform -rotate-1 hover:rotate-0 transition-transform h-full flex flex-col">
                             <div className="text-5xl mb-4" aria-hidden="true">🚀</div>
                             <h3 className="text-2xl font-display font-bold mb-3">{t("about_t3")}</h3>
                             <p className="text-lg text-gray-700">{t("about_p3")}</p>
