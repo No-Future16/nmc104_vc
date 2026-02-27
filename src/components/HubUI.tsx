@@ -100,7 +100,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             <header className="border-b-4 border-border-dark bg-bg-lavender py-24 px-6 text-center relative overflow-hidden flex flex-col items-center">
                 <div className="max-w-3xl mx-auto relative z-10 flex flex-col items-center">
                     <div
-                        className="inline-block bg-pink text-white px-4 py-2 font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] mb-6 transform -rotate-2"
+                        className="inline-block bg-pink text-white px-4 py-2 font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] mb-6"
                         dangerouslySetInnerHTML={tHtml("badge_semester")}
                     />
                     <h1 className="text-6xl md:text-8xl font-display font-black leading-tight mb-6">
@@ -162,7 +162,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             {/* Schedule Overview Section */}
             <section id="schedule" className="py-20 px-6 border-b-4 border-border-dark bg-white">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-display font-black mb-12 text-center bg-cyan px-6 py-3 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2 transform -rotate-1">
+                    <h2 className="text-3xl md:text-4xl font-display font-black mb-12 text-center bg-cyan px-6 py-3 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2">
                         📅 {t("schedule_title" as TranslationKey)}
                     </h2>
 
@@ -365,8 +365,8 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             {/* Policies / FAQ */}
             <section id="policies" className="py-20 px-6">
                 <div className="max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-display font-black mb-12 text-center bg-orange/20 px-6 py-3 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2 transform rotate-1">
-                        📜 {t("pol_title")}
+                    <h2 className="text-3xl md:text-4xl font-display font-black mb-12 text-center bg-orange/20 px-6 py-3 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2">
+                        {t("pol_title")}
                     </h2>
                     <div className="space-y-4">
                         {[1, 2, 3].map((i) => (
