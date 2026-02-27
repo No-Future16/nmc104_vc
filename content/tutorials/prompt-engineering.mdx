@@ -1,0 +1,62 @@
+---
+title: "Prompt Engineering Patterns"
+description: "Advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability."
+title_tr: "Prompt Mühendisliği Desenleri"
+description_tr: "Büyük Dil Modellerinde (LLM) performansı, güvenilirliği ve kontrol edilebilirliği en üst düzeye çıkarmak için gelişmiş prompt teknikleri."
+---
+
+<En>
+# Prompt Engineering Patterns
+
+Advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability.
+
+## Core Capabilities
+
+### 1. Few-Shot Learning
+Teach the model by showing examples instead of explaining rules. Include 2-5 input-output pairs that demonstrate the desired behavior. Use when you need consistent formatting, specific reasoning patterns, or handling of edge cases. More examples improve accuracy but consume tokens—balance based on task complexity.
+
+### 2. Chain-of-Thought Prompting
+Request step-by-step reasoning before the final answer. Add "Let's think step by step" (zero-shot) or include example reasoning traces (few-shot). Use for complex problems requiring multi-step logic, mathematical reasoning, or when you need to verify the model's thought process. Improves accuracy on analytical tasks by 30-50%.
+
+### 3. Prompt Optimization
+Systematically improve prompts through testing and refinement. Start simple, measure performance (accuracy, consistency, token usage), then iterate. Test on diverse inputs including edge cases. Use A/B testing to compare variations. Critical for production prompts where consistency and cost matter.
+
+### 4. Template Systems
+Build reusable prompt structures with variables, conditional sections, and modular components. Use for multi-turn conversations, role-based interactions, or when the same pattern applies to different inputs.
+
+<Alert type="info">
+**Pro Tip:** Start with simple prompts, add complexity only when needed. Remember: System Context → Task Instruction → Examples → Input Data → Output Format.
+</Alert>
+
+---
+
+<Quiz title="Prompt Engineering Knowledge Check" questionsJson='[{"prompt": "What is the primary benefit of Few-Shot Learning in prompt engineering?", "options": ["It reduces token consumption to zero.", "It teaches the model desired behavior and formatting by showing examples rather than just explaining rules.", "It forces the model to search the live internet.", "It makes the prompt run faster on older hardware."], "correctIndex": 1, "explanation": "Few-shot learning acts as highly effective context anchoring. LLMs are pattern matchers, and showing them the exact pattern you want is more reliable than abstractly describing it."}, {"prompt": "When should you use Chain-of-Thought (CoT) prompting?", "options": ["For simple greetings and translation tasks.", "When asking for a list of random words.", "For complex problems requiring multi-step logic or mathematical reasoning.", "Only when the prompt is too short."], "correctIndex": 2, "explanation": "CoT forces the model to allocate &apos;compute tokens&apos; to reasoning before outputting an answer, drastically reducing logic errors on complex tasks."}]' />
+</En>
+
+<Tr>
+# Prompt Mühendisliği Desenleri
+
+Büyük Dil Modellerinde (LLM) performansı, güvenilirliği ve kontrol edilebilirliği en üst düzeye çıkarmak için gelişmiş prompt (komut) teknikleri.
+
+## Temel Yetenekler
+
+### 1. Az Örnekli Öğrenme (Few-Shot Learning)
+Modele kuralları açıklamak yerine örnekler göstererek öğretin. İstenen davranışı gösteren 2-5 girdi-çıktı çifti ekleyin. Tutarlı biçimlendirme, özel akıl yürütme kalıpları veya uç durumların işlenmesi gerektiğinde kullanın. Daha fazla örnek doğruluğu artırır, ancak token (jeton) tüketir; görev karmaşıklığına göre dengeleyin.
+
+### 2. Düşünce Zinciri (Chain-of-Thought)
+Nihai cevaptan önce adım adım akıl yürütme talep edin. "Adım adım düşünelim" (Let's think step by step) ekleyin veya örnek akıl yürütme zincirleri sunun. Çok adımlı mantık, matematiksel akıl yürütme gerektiren karmaşık problemler için veya modelin düşünce sürecini doğrulamanız gerektiğinde kullanın. Analitik görevlerde doğruluğu %30-50 oranında artırır.
+
+### 3. Komut Optimizasyonu (Prompt Optimization)
+Komutlarınızı test etme ve iyileştirme yoluyla sistematik olarak geliştirin. Basit başlayın, performansı (doğruluk, tutarlılık, token kullanımı) ölçün ve ardından yineleyin (iterate). Uç durumlar dahil çeşitli girdiler üzerinde test edin. Değişiklikleri karşılaştırmak için A/B testi kullanın. İstikrar ve maliyetin önemli olduğu üretim ortamı (production) metinleri için kritik öneme sahiptir.
+
+### 4. Şablon (Template) Sistemleri
+Değişkenler, koşullu bölümler ve modüler bileşenlerle yeniden kullanılabilir komut yapıları oluşturun. Çok turlu konuşmalar, rol tabanlı etkileşimler veya aynı kalıbın farklı girdilere uygulanacağı durumlar için kullanın.
+
+<Alert type="info">
+**İpucu:** Basit komutlarla başlayın, karmaşıklığı sadece gerektiğinde ekleyin. Unutmayın: Sistem Bağlamı → Görev Talimatı → Örnekler → Girdi Verisi → Çıktı Formatı.
+</Alert>
+
+---
+
+<Quiz title="Prompt Bilgi Testi" questionsJson='[{"prompt": "Prompt mühendisliğinde Az Örnekli Öğrenmenin (Few-Shot) birincil faydası nedir?", "options": ["Token tüketimini sıfıra indirmesi.", "Modele sadece kuralları açıklamak yerine örnekler üzerinden istenilen davranış ve formatı öğretmesi.", "Modeli anlık (live) internette arama yapmaya zorlaması.", "Promptun eski donanımlarda daha hızlı çalışmasını sağlaması."], "correctIndex": 1, "explanation": "Few-shot öğrenme son derece etkili bir bağlam (context) çapasıdır. LLM&apos;ler örüntü eşleştiricilerdir; onlara istediğiniz örüntüyü tam olarak göstermek, onu soyut olarak tanımlamaktan çok daha güvenilirdir."}, {"prompt": "Düşünce Zinciri (Chain-of-Thought) kullanımını ne zaman tercih etmelisiniz?", "options": ["Basit selamlaşmalar ve çeviri görevleri için.", "Rastgele kelimelerden oluşan bir liste isterken.", "Çok adımlı mantık veya matematiksel hesaplama gerektiren karmaşık problemler için.", "Sadece komut çok kısa olduğunda."], "correctIndex": 2, "explanation": "Düşünce Zinciri (CoT), modeli bir cevap üretmeden önce akıl yürütmeye &apos;hesaplama tokenleri&apos; ayırmaya zorlar. Böylece karmaşık görevlerde mantık hataları önemli ölçüde azalır."}]' />
+</Tr>

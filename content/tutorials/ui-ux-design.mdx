@@ -1,0 +1,98 @@
+---
+title: "UI/UX Pro Max - Design Intelligence"
+description: "Comprehensive design guide for web and mobile applications covering accessibility, layout, and interaction."
+title_tr: "UI/UX Pro Max - Tasarım Zekası"
+description_tr: "Web ve mobil uygulamalar için erişilebilirlik, düzen ve etkileşimi kapsayan kapsamlı tasarım rehberi."
+---
+
+<En>
+# UI/UX Pro Max - Design Intelligence
+
+Comprehensive design guide for web and mobile applications. Contains UX guidelines, touch interactions, typography pairings, and performance rules.
+
+<Alert type="warning">
+**Important:** Accessibility and Touch Interactions are CRITICAL priorities in modern web design.
+</Alert>
+
+## Priority Rules
+
+### 1. Accessibility (CRITICAL)
+- Minimum 4.5:1 ratio for normal text contrast.
+- Visible focus rings on interactive elements.
+- Descriptive alt text for meaningful images.
+- Tab order matches visual order.
+
+### 2. Touch & Interaction (CRITICAL)
+- Minimum 44x44px touch targets.
+- Use click/tap for primary interactions (don't rely solely on hover).
+- Provide clear error messages near the problem area.
+- Add `cursor-pointer` to all clickable elements.
+
+### 3. Performance (HIGH)
+- Optimize images using WebP, srcset, and lazy loading.
+- Respect `prefers-reduced-motion` for accessibility.
+- Reserve space for async content to prevent layout shifts.
+
+### 4. Layout & Responsive (HIGH)
+- Minimum 16px body text on mobile for readability.
+- Ensure content fits viewport width (no horizontal scrolling).
+- Define a clear z-index scale (e.g., 10, 20, 30, 50).
+
+## Common Pitfalls to Avoid
+
+| Rule | Do | Don't |
+|------|----|----- |
+| **No emoji icons** | Use SVG icons like Lucide or Heroicons | Use emojis like 🎨 🚀 ⚙️ as UI icons |
+| **Stable hover states** | Use color/opacity transitions on hover | Use scale transforms that shift layout |
+| **Hover feedback** | Provide visual feedback (color, shadow, border) | Leave no indication element is interactive |
+
+---
+
+<Quiz title="Design Intelligence Check" questionsJson='[{"prompt": "What is the minimum recommended size for touch targets on mobile devices?", "options": ["24x24px", "16x16px", "44x44px", "100x100px"], "correctIndex": 2, "explanation": "44x44 pixels is the industry standard (and Apple iOS Human Interface Guidelines) minimum for comfortable finger tapping without misclicks."}, {"prompt": "Why should you NOT rely solely on hover states for primary interactions?", "options": ["Because hover states take up too much memory (RAM).", "Because hover states cannot be styled with CSS anymore.", "Because hover does not exist on touch devices (smartphones, tablets).", "Because hover is only for dark mode."], "correctIndex": 2, "explanation": "Mobile devices account for over half of web traffic. If an action is only visible or accessible via mouse hover, touch users will be completely unable to interact with it."}]' />
+</En>
+
+<Tr>
+# UI/UX Pro Max - Tasarım Zekası
+
+Web ve mobil uygulamalar için kapsamlı tasarım rehberi. UX yönergeleri, dokunmatik (touch) etkileşimler, tipografi eşleşmeleri ve performans kurallarını içerir.
+
+<Alert type="warning">
+**Önemli:** Erişilebilirlik ve Dokunmatik Etkileşimler modern web tasarımında KRİTİK önceliklerdir.
+</Alert>
+
+## Öncelikli Kurallar
+
+### 1. Erişilebilirlik (KRİTİK)
+- Normal metin kontrastı için minimum 4.5:1 oranı.
+- Etkileşimli elemanlarda görünür odak halkaları (focus rings).
+- Anlam ifade eden görseller için açıklayıcı 'alt' metinleri.
+- Görsel sırayla eşleşen 'Tab' tuşu gezinme sırası.
+
+### 2. Dokunmatik ve Etkileşim (KRİTİK)
+- Minimum 44x44px dokunma hedefleri (touch targets).
+- Birincil etkileşimler için tıkla/dokun özelliğini kullanın (sadece 'üzerine gelme/hover' durumuna güvenmeyin).
+- Sorunlu alanın yakınında net hata mesajları sağlayın.
+- Tüm tıklanabilir elemanlara `cursor-pointer` (işaretçi) efekti ekleyin.
+
+### 3. Performans (YÜKSEK)
+- WebP, srcset ve tembel yükleme (lazy loading) kullanarak görselleri optimize edin.
+- Erişilebilirlik için `prefers-reduced-motion` (azaltılmış hareket tercihi) kuralına saygı gösterin.
+- Düzen kaymalarını (layout shifts) önlemek için asenkron yüklenecek içeriklere önceden boş alan ayırın.
+
+### 4. Düzen (Layout) & Duyarlılık (YÜKSEK)
+- Okunabilirlik için mobilde gövde (body) metni minimum 16px olmalı.
+- İçeriğin görünüm alanına (viewport) tam sığdığından emin olun (yatay kaydırma olmamalıdır).
+- Net bir z-index ölçeği belirleyin (örneğin; 10, 20, 30, 50).
+
+## Kaçınılması Gereken Tasarım Tuzakları
+
+| Kural | Yap | Yapma |
+|------|----|----- |
+| **İkon olarak emoji yok** | Lucide veya Heroicons gibi SVG ikonlar kullanın | UI ikonu olarak 🎨 🚀 ⚙️ gibi emojiler kullanmak |
+| **Sabit hover (üzerine gelme) durumları** | Hover anında renk/şeffaflık (opacity) geçişleri kullanın | Tüm düzeni kaydıran ölçekleme (scale) dönüşümleri yapmak |
+| **Hover geri bildirimi** | Görsel geri bildirim sağlayın (renk, gölge, kenarlık) | Bir ögenin tıklanabilir/etkileşimli olduğuna dair hiçbir belirti koymamak |
+
+---
+
+<Quiz title="Tasarım Zekası Testi" questionsJson='[{"prompt": "Mobil cihazlardaki dokunmatik hedefler (buton/ikon vb.) için önerilen minimum boyut nedir?", "options": ["24x24px", "16x16px", "44x44px", "100x100px"], "correctIndex": 2, "explanation": "44x44 piksel, yanlış tıklamalar olmadan rahatça parmakla dokunabilmek için endüstri standardı (ve Apple iOS İnsan Arayüzü Yönergeleri) asgari boyutudur."}, {"prompt": "Birincil etkileşimler için neden sadece &apos;üzerine gelme (hover)&apos; durumlarına GÜVENMEMELİSİNİZ?", "options": ["Çünkü hover durumları çok fazla bellek (RAM) tüketir.", "Çünkü hover durumları artık CSS ile şekillendirilemiyor.", "Çünkü dokunmatik cihazlarda (akıllı telefonlar, tabletler) fare ile &apos;üzerine gelme&apos; eylemi yoktur.", "Çünkü hover özelliği sadece karanlık mod içindir."], "correctIndex": 2, "explanation": "Mobil cihazlar, web trafiğinin yarısından fazlasını oluşturmaktadır. Eğer bir işlev yalnızca fare ile üzerine gelindiğinde görünür veya erişilebilir oluyorsa, dokunmatik ekran kullanıcıları bu işlevle kesinlikle etkileşime giremeyecektir."}]' />
+</Tr>
