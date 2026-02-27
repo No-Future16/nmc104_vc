@@ -204,9 +204,11 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                         return (
                                             <tr key={week.slug} className={rowClass}>
                                                 <td className="p-4 font-bold border-r-2 border-border-dark/20 w-32">
-                                                    <span className={`${badgeColor} w-24 text-center px-2 py-1 rounded inline-block text-sm border-2 border-border-dark`}>
-                                                        {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
-                                                    </span>
+                                                    <Link href={`/weeks/${week.slug}`}>
+                                                        <span className={`${badgeColor} w-24 text-center px-2 py-1 rounded inline-block text-sm border-2 border-border-dark cursor-pointer hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_var(--color-border-dark)] active:translate-y-0 active:shadow-none transition-all`}>
+                                                            {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
+                                                        </span>
+                                                    </Link>
                                                 </td>
                                                 <td className="p-4 font-mono font-bold text-sm border-r-2 border-border-dark/20 w-32">
                                                     {lang === 'tr' && week.frontmatter.date_tr ? week.frontmatter.date_tr : week.frontmatter.date}
