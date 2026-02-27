@@ -376,7 +376,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                                     <span className="text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                                 </summary>
                                 <div
-                                    className="p-6 pt-0 text-lg leading-relaxed text-gray-700 border-t-2 border-dashed border-border-dark opacity-0 group-open:opacity-100 transition-opacity duration-300"
+                                    className="p-6 pt-4 text-lg leading-relaxed text-gray-700 border-t-2 border-dashed border-border-dark opacity-0 group-open:opacity-100 transition-opacity duration-300"
                                     dangerouslySetInnerHTML={tHtml(`p${i}_desc` as TranslationKey)}
                                 />
                             </details>
