@@ -162,7 +162,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             {/* Schedule Overview Section */}
             <section id="schedule" className="py-20 px-6 border-b-4 border-border-dark bg-white">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-display font-black mb-8 text-center bg-cyan px-4 py-2 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2 transform -rotate-1">
+                    <h2 className="text-3xl md:text-4xl font-display font-black mb-12 text-center bg-cyan px-6 py-3 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2 transform -rotate-1">
                         📅 {t("schedule_title" as TranslationKey)}
                     </h2>
 
@@ -365,11 +365,13 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             {/* Policies / FAQ */}
             <section id="policies" className="py-20 px-6">
                 <div className="max-w-3xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-display font-black mb-12 text-center text-orange">{t("pol_title")}</h2>
+                    <h2 className="text-3xl md:text-4xl font-display font-black mb-12 text-center bg-orange/20 px-6 py-3 inline-block rounded-brutal border-4 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] relative left-1/2 -translate-x-1/2 transform rotate-1">
+                        📜 {t("pol_title")}
+                    </h2>
                     <div className="space-y-4">
                         {[1, 2, 3].map((i) => (
                             <details key={i} className="reveal group bg-white border-4 border-border-dark rounded-brutal [&_summary::-webkit-details-marker]:hidden">
-                                <summary className="flex items-center justify-between p-6 cursor-pointer font-display font-bold text-xl hover:bg-orange/10 transition-colors">
+                                <summary className="flex items-center justify-between p-6 cursor-pointer font-display font-bold text-xl hover:bg-orange/10 active:rotate-1 active:scale-[0.99] transition-all duration-300">
                                     {t(`p${i}_title` as TranslationKey)}
                                     <span className="text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                                 </summary>

@@ -109,7 +109,7 @@ export const translations = {
         pol_title: "Ders Politikaları",
         p1_title: "Devam ve Aktif Katılım",
         p1_desc: "Bu ders uygulamalı bir stüdyo dersidir. Doğrudan bonus puanlarınızı etkileyen sınıf içi pratikler yapacağımız için <strong>aktif katılım beklenmektedir</strong>. Dönem boyunca resmi olarak dersten kalmadan <strong>9 saat</strong> (yaklaşık 3 hafta) devamsızlık yapma hakkınız bulunmaktadır.",
-        p2_title: "Geç Teslim Cezas",
+        p2_title: "Geç Teslim Cezası",
         p2_desc: "1 gün geç: -%10 | 2 gün geç: -%20 | 3 gün geç: -%30. 3 günden fazla geciken projeler 0 Puan alır.",
         p3_title: "Yapay Zeka ve Akademik Dürüstlük",
         p3_desc: "Yapay zekayı fikir üretmek için kullanın, işi ona yaptırmak için değil. Yapay zeka ile üretilmiş herhangi bir varlık (asset), kullanılan tam komutla (prompt) birlikte belirtilmelidir. Sadece YZ ile üretilmiş bir işi kendi eseriniz gibi sunmak veya tasarımları çalmak disiplin işlemine tabi olacaktır.",
