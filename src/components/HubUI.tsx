@@ -151,11 +151,17 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                     <h2 className="text-3xl md:text-4xl font-display font-black mb-6 text-purple">
                         📢 {t("announcement_title" as TranslationKey)}
                     </h2>
-                    <div className="bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-purple)]">
-                        <div
-                            className="text-lg font-medium text-gray-700 text-left"
-                            dangerouslySetInnerHTML={tHtml("announcement_desc" as TranslationKey)}
-                        />
+                    <div className="bg-white border-4 border-border-dark rounded-brutal shadow-[6px_6px_0px_var(--color-purple)]">
+                        <details className="group [&_summary::-webkit-details-marker]:hidden">
+                            <summary className="flex items-center justify-between p-6 cursor-pointer font-display font-bold text-xl hover:bg-purple/10 active:rotate-1 active:scale-[0.99] transition-all duration-300">
+                                {lang === 'tr' ? '1. Hafta: Aramıza Hoş Geldiniz!' : 'Week 1: Welcome to the Course!'}
+                                <span className="text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+                            </summary>
+                            <div
+                                className="p-6 pt-4 text-lg font-medium text-gray-700 text-left border-t-2 border-dashed border-border-dark opacity-0 group-open:opacity-100 transition-opacity duration-300"
+                                dangerouslySetInnerHTML={tHtml("announcement_desc" as TranslationKey)}
+                            />
+                        </details>
                     </div>
                 </div>
             </section>
