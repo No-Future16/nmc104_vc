@@ -152,9 +152,10 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                         📢 {t("announcement_title" as TranslationKey)}
                     </h2>
                     <div className="bg-white border-4 border-border-dark rounded-brutal p-8 shadow-[6px_6px_0px_var(--color-purple)]">
-                        <p className="text-xl font-medium text-gray-700 italic">
-                            {t("announcement_desc" as TranslationKey)}
-                        </p>
+                        <div
+                            className="text-lg font-medium text-gray-700 text-left"
+                            dangerouslySetInnerHTML={tHtml("announcement_desc" as TranslationKey)}
+                        />
                     </div>
                 </div>
             </section>

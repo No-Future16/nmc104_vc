@@ -29,7 +29,36 @@ export const translations = {
         f_title: "Final: Portfolio",
         f_desc: "Due Week 15 (Personal Portfolio Website)",
         announcement_title: "Announcements",
-        announcement_desc: "Will be added when there's an announcement, stay tuned!",
+        announcement_desc: `
+<p class="mb-4">Dear Students,</p>
+<p class="mb-4">Welcome to <strong>NMC104: Digital Design!</strong> I am very excited to have you in this class for the Spring semester.</p>
+<p class="mb-4">To make our learning experience as smooth and interactive as possible, I have designed a dedicated course website just for us. You can access our syllabus, weekly roadmap, lecture notes, tutorials, and course policies all in one place:</p>
+<p class="mb-6">🌐 <strong>Course Hub:</strong> <a href="https://nmc104.vercel.app" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">nmc104.vercel.app</a> (Please bookmark this link!)</p>
+<p class="mb-4">Here are a few important details you need to know as we begin the semester:</p>
+<div class="mb-4">
+    <strong class="text-purple">1. About the Course Website</strong>
+    <p>The Course Hub is your primary resource. Before each week, I will upload a brief overview of what we will cover. You can track our 15-week schedule, access UI/UX tutorials (including Canva and Figma guides), and review past lectures. The platform supports both English and Turkish for your convenience.</p>
+</div>
+<div class="mb-4">
+    <strong class="text-purple">2. Midterm & Final Expectations</strong>
+    <p>This course is highly practical. Rather than traditional memorization-based written exams, your Midterm and Final grades will be heavily based on project submissions. You will be expected to apply the design principles we learn to create digital products (using tools like Canva or Figma). Creativity, effort, and meeting project guidelines will be the key to your success. More detailed briefs will be shared on the Hub as the dates approach.</p>
+</div>
+<div class="mb-4">
+    <strong class="text-purple">3. Attendance Policy</strong>
+    <p>Attendance is mandatory and crucial for this course, as design is learned through practice and in-class feedback. Please make sure to be present and actively participate in our weekly sessions. (You can review the exact Late Submission & Communication policies on our Course Hub).</p>
+</div>
+<div class="mb-6">
+    <strong class="text-purple">4. Contact & Office Hours</strong>
+    <p>If you have any questions, need feedback on your designs, or just want to chat about UI/UX, my door is always open (except Mondays and Tuesdays, sadly).</p>
+    <ul class="list-disc list-inside mt-2">
+        <li><strong>Email:</strong> <a href="mailto:semih.eken@uskudar.edu.tr" class="text-purple underline hover:text-pink transition-colors">semih.eken@uskudar.edu.tr</a></li>
+        <li><strong>Office Location:</strong> C Block, Room 401</li>
+    </ul>
+</div>
+<p class="mb-4">Please take a moment this week to explore the Course Hub and read through the Week 1 materials.</p>
+<p class="mb-6">Looking forward to a great semester together!</p>
+<p>Best regards,<br/><strong>Semih</strong></p>
+        `,
 
         schedule_title: "15-Week Overview",
         th_week: "Week",
@@ -99,7 +128,36 @@ export const translations = {
         f_title: "Final: Portfolyo",
         f_desc: "15. Hafta Teslim (Kişisel Portfolyo Web Sitesi)",
         announcement_title: "Duyurular",
-        announcement_desc: "Duyuru olduğunda buraya eklenecektir, takipte kalın!",
+        announcement_desc: `
+<p class="mb-4">Değerli Öğrenciler,</p>
+<p class="mb-4"><strong>NMC104: Dijital Tasarım</strong> dersine hoş geldiniz! Bahar döneminde bu derste sizinle birlikte olmaktan büyük heyecan duyuyorum.</p>
+<p class="mb-4">Öğrenme deneyimimizi mümkün olduğunca pürüzsüz ve etkileşimli hale getirmek için, sadece bize özel bir ders web sitesi tasarladım. Müfredatımıza, haftalık yol haritamıza, ders notlarına, eğitimlere ve ders politikalarına tek bir yerden erişebilirsiniz:</p>
+<p class="mb-6">🌐 <strong>Kurs Merkezi:</strong> <a href="https://nmc104.vercel.app" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">nmc104.vercel.app</a> (Lütfen bu bağlantıyı yer imlerinize ekleyin!)</p>
+<p class="mb-4">Döneme başlarken bilmeniz gereken birkaç önemli detay şunlar:</p>
+<div class="mb-4">
+    <strong class="text-purple">1. Ders Web Sitesi Hakkında</strong>
+    <p>Kurs Merkezi (Hub) ana kaynağınızdır. Her haftadan önce, işleyeceğimiz konuların kısa bir özetini buraya yükleyeceğim. 15 haftalık programımızı takip edebilir, UI/UX eğitimlerine (Canva ve Figma rehberleri dahil) erişebilir ve geçmiş dersleri gözden geçirebilirsiniz. Platform, kullanım kolaylığınız için hem İngilizce hem de Türkçe dillerini desteklemektedir.</p>
+</div>
+<div class="mb-4">
+    <strong class="text-purple">2. Vize ve Final Beklentileri</strong>
+    <p>Bu ders ağırlıklı olarak uygulamalıdır. Geleneksel ezbere dayalı yazılı sınavlar yerine, Vize ve Final notlarınız büyük ölçüde proje teslimlerinize dayanacaktır. Öğrendiğimiz tasarım prensiplerini dijital ürünler yaratmak için (Canva veya Figma gibi araçlar kullanarak) uygulamanız beklenecektir. Yaratıcılık, çaba ve proje kurallarına uymak başarınızın anahtarı olacaktır. Tarihler yaklaştıkça Hub üzerinden daha detaylı proje özetleri paylaşılacaktır.</p>
+</div>
+<div class="mb-4">
+    <strong class="text-purple">3. Devam Politikası</strong>
+    <p>Tasarım pratik yaparak ve sınıf içi geri bildirimlerle öğrenildiği için bu derste devam zorunluluğu ve katılım çok önemlidir. Lütfen haftalık derslerimizde hazır bulunmaya ve aktif olarak katılmaya özen gösterin. (Geç Teslim ve İletişim politikalarının detaylarını Course Hub'ımızdan inceleyebilirsiniz).</p>
+</div>
+<div class="mb-6">
+    <strong class="text-purple">4. İletişim ve Ofis Saatleri</strong>
+    <p>Herhangi bir sorunuz olursa, tasarımlarınız üzerine geri bildirime ihtiyaç duyarsanız veya sadece UI/UX hakkında sohbet etmek isterseniz kapım her zaman açık (Pazartesi ve Salı günleri hariç, maalesef).</p>
+    <ul class="list-disc list-inside mt-2">
+        <li><strong>E-posta:</strong> <a href="mailto:semih.eken@uskudar.edu.tr" class="text-purple underline hover:text-pink transition-colors">semih.eken@uskudar.edu.tr</a></li>
+        <li><strong>Ofis Konumu:</strong> C Blok, 401 Nolu Oda</li>
+    </ul>
+</div>
+<p class="mb-4">Lütfen bu hafta Course Hub'ı incelemek ve 1. Hafta materyallerini okumak için biraz zaman ayırın.</p>
+<p class="mb-6">Birlikte harika bir dönem geçirmek dileğiyle!</p>
+<p>Sevgiler,<br/><strong>Semih</strong></p>
+        `,
 
         schedule_title: "15 Haftalık Dönem Takvimi",
         th_week: "Hafta",
