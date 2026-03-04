@@ -311,9 +311,9 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                     ref={contentRef}
                     className="relative w-full overflow-x-auto hide-scrollbar touch-pan-x snap-x snap-mandatory overscroll-x-contain"
                 >
-                    <div className="relative flex items-center h-[450px] md:h-[480px] gap-x-4 md:gap-x-6 px-6 md:px-12 w-max py-8">
+                    <div className="relative flex items-center gap-x-4 md:gap-x-6 px-6 md:px-12 w-max py-8 md:py-12">
                         {/* The horizontal track line */}
-                        <div className="absolute top-[210px] md:top-[230px] left-0 w-full h-2 bg-border-dark -translate-y-1/2 z-0 rounded-full"></div>
+                        <div className="absolute top-1/2 left-0 w-full h-2 bg-border-dark -translate-y-1/2 z-0 rounded-full"></div>
 
                         {weeks.map((week, index) => {
                             const wNum = week.frontmatter.week || "";
