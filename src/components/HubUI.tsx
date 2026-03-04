@@ -332,7 +332,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
 
             {/* Roadmap Section */}
             <section id="timeline" ref={targetRef} className="relative bg-bg-light" style={{ height: scrollRange > 0 ? `calc(100vh + ${scrollRange}px)` : '300vh' }}>
-                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-4 md:py-8 w-full">
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden pt-20 md:pt-28 pb-4 md:pb-8 w-full">
 
                     {/* Horizontal scroll container */}
                     <div className="relative w-full h-[450px] md:h-[480px] shrink-0">
