@@ -1,13 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { translations, Language, TranslationKey } from "@/lib/translations";
 import LanguageToggle from "@/components/LanguageToggle";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: any[] }) {
     const [lang, setLang] = useState<Language>("tr");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Horizontal scroll refs
+    const targetRef = useRef<HTMLElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [scrollRange, setScrollRange] = useState(0);
+    const [hasAutoScrolled, setHasAutoScrolled] = useState(false);
+
+    // Calculate the width needed to scroll
+    useEffect(() => {
+        const updateRange = () => {
+            if (contentRef.current) {
+                // Determine how much overflow we have
+                setScrollRange(contentRef.current.scrollWidth - window.innerWidth + 80); // padding buffer
+            }
+        };
+        updateRange();
+        window.addEventListener("resize", updateRange);
+        return () => window.removeEventListener("resize", updateRange);
+    }, [weeks]);
+
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+    });
+    const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
     // Load saved lang on mount
     useEffect(() => {
@@ -36,6 +61,55 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
 
         return () => observer.disconnect();
     }, []);
+
+    // Auto-scroll to current week on first view of timeline
+    useEffect(() => {
+        if (scrollRange === 0 || !targetRef.current || hasAutoScrolled) return;
+
+        const handleScroll = () => {
+            if (!targetRef.current || hasAutoScrolled) return;
+            const rect = targetRef.current.getBoundingClientRect();
+
+            // If the top of the timeline container is near the top of the viewport
+            if (rect.top <= 100 && rect.top >= -150) {
+                setHasAutoScrolled(true); // Fire once
+
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                let activeIndex = weeks.findIndex(week => {
+                    const d = new Date(`${week.frontmatter.date}, 2026`);
+                    return d >= today;
+                });
+
+                // If all weeks are in the past, go to last
+                if (activeIndex === -1) activeIndex = weeks.length - 1;
+
+                // Only auto-scroll if it's not the very first week (which is already visible)
+                if (activeIndex > 0) {
+                    const cardEl = document.getElementById(`timeline-${weeks[activeIndex].slug}`);
+                    if (cardEl) {
+                        const sectionTop = window.scrollY + rect.top;
+                        const cardX = cardEl.offsetLeft;
+                        const padding = window.innerWidth > 768 ? 100 : 40;
+
+                        // Calculate vertical scroll offset to reach that x position
+                        const offset = Math.max(0, Math.min(cardX - padding, scrollRange));
+                        const targetY = sectionTop + offset;
+
+                        // Small delay so user sees the slide happening naturally
+                        setTimeout(() => {
+                            window.scrollTo({ top: targetY, behavior: 'smooth' });
+                        }, 400);
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Check immediately in case they load on it
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [scrollRange, hasAutoScrolled, weeks]);
 
     const toggleLang = (newLang: Language) => {
         setLang(newLang);
@@ -257,99 +331,164 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             </section>
 
             {/* Roadmap Section */}
-            <section id="timeline" className="max-w-4xl mx-auto py-20 px-6">
-                <h2 className="text-4xl md:text-5xl font-display font-black mb-4 text-center">
-                    {t("roadmap_title")}
-                </h2>
-                <p className="text-xl text-center text-gray-700 font-medium mb-16">{t("roadmap_desc")}</p>
+            <section id="timeline" ref={targetRef} className="relative bg-bg-light" style={{ height: scrollRange > 0 ? `calc(100vh + ${scrollRange}px)` : '300vh' }}>
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-10 w-full">
+                    {/* Header that stays fixed while scrolling */}
+                    <div className="w-full px-6 flex flex-col items-center text-center z-20 shrink-0 mb-6 md:mb-10">
+                        <h2 className="text-3xl md:text-5xl font-display font-black mb-2 md:mb-4">
+                            {t("roadmap_title")}
+                        </h2>
+                        <p className="text-lg md:text-xl text-gray-700 font-medium max-w-2xl">{t("roadmap_desc")}</p>
+                    </div>
 
-                <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-transparent before:via-border-dark before:to-transparent">
-                    {weeks.map((week) => {
-                        const wNum = week.frontmatter.week || "";
-                        const isMidterm = wNum === "Week 7";
-                        const isFinal = wNum === "Week 15";
-                        const isHoliday = wNum === "Week 5" || wNum === "Week 12" || wNum === "Week 14";
-                        const isWorkersDay = wNum === "Week 10";
+                    {/* Horizontal scroll container */}
+                    <div className="relative w-full h-[420px] md:h-[460px] shrink-0">
+                        <motion.div
+                            ref={contentRef}
+                            style={{ x }}
+                            className="relative flex items-center h-full gap-x-4 md:gap-x-6 px-6 md:px-12 w-max"
+                        >
+                            {/* The horizontal track line */}
+                            <div className="absolute top-[210px] md:top-[230px] left-0 w-full h-2 bg-border-dark -translate-y-1/2 z-0 rounded-full"></div>
 
-                        const d = new Date(`${week.frontmatter.date}, 2026`);
-                        const today = new Date();
-                        today.setHours(0, 0, 0, 0);
-                        const isPast = d < today;
+                            {weeks.map((week, index) => {
+                                const wNum = week.frontmatter.week || "";
+                                const isMidterm = wNum === "Week 7";
+                                const isFinal = wNum === "Week 15";
+                                const isHoliday = wNum === "Week 5" || wNum === "Week 12" || wNum === "Week 14";
+                                const isWorkersDay = wNum === "Week 10";
 
-                        let cardColor = "var(--color-purple)";
-                        let badgeColor = "bg-purple text-white";
-                        let dotColor = "bg-lime";
-                        let hoverScale = "hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_var(--color-pink)]";
-                        let cardOpacity = isPast ? "opacity-60" : "opacity-100";
+                                const d = new Date(`${week.frontmatter.date}, 2026`);
+                                const today = new Date();
+                                today.setHours(0, 0, 0, 0);
+                                const isPast = d < today;
 
-                        if (isMidterm) {
-                            cardColor = "var(--color-orange)";
-                            badgeColor = "bg-orange text-white";
-                            dotColor = "bg-orange animate-pulse";
-                            hoverScale = "hover:-translate-y-2 hover:shadow-[10px_10px_0px_var(--color-orange)] ring-4 ring-orange ring-opacity-50";
-                        } else if (isFinal) {
-                            cardColor = "var(--color-gold)";
-                            badgeColor = "bg-gold text-text-dark";
-                            dotColor = "bg-gold animate-pulse";
-                            hoverScale = "hover:-translate-y-2 hover:shadow-[10px_10px_0px_var(--color-gold)] ring-4 ring-gold ring-opacity-50";
-                        } else if (isWorkersDay) {
-                            cardColor = "var(--color-red)";
-                            badgeColor = "bg-red text-white";
-                            dotColor = "bg-red opacity-50";
-                            hoverScale = "hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--color-red)]";
-                        } else if (isHoliday) {
-                            cardColor = "var(--color-blue)";
-                            badgeColor = "bg-blue text-white";
-                            dotColor = "bg-blue opacity-50";
-                            hoverScale = "hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--color-blue)]";
-                        }
+                                let cardColor = "var(--color-purple)";
+                                let badgeColor = "bg-purple text-white";
+                                let dotColor = "bg-lime";
+                                let hoverScale = "hover:-translate-y-1 hover:shadow-[6px_6px_0px_var(--color-pink)]";
+                                let cardOpacity = isPast ? "opacity-60" : "opacity-100";
 
-                        let textClass = isPast ? "line-through text-gray-500" : "text-text-dark";
+                                if (isMidterm) {
+                                    cardColor = "var(--color-orange)";
+                                    badgeColor = "bg-orange text-white";
+                                    dotColor = "bg-orange animate-pulse";
+                                    hoverScale = "hover:-translate-y-1 hover:shadow-[6px_6px_0px_var(--color-orange)] ring-4 ring-orange ring-opacity-50";
+                                } else if (isFinal) {
+                                    cardColor = "var(--color-gold)";
+                                    badgeColor = "bg-gold text-text-dark";
+                                    dotColor = "bg-gold animate-pulse";
+                                    hoverScale = "hover:-translate-y-1 hover:shadow-[6px_6px_0px_var(--color-gold)] ring-4 ring-gold ring-opacity-50";
+                                } else if (isWorkersDay) {
+                                    cardColor = "var(--color-red)";
+                                    badgeColor = "bg-red text-white";
+                                    dotColor = "bg-red opacity-50";
+                                    hoverScale = "hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_var(--color-red)]";
+                                } else if (isHoliday) {
+                                    cardColor = "var(--color-blue)";
+                                    badgeColor = "bg-blue text-white";
+                                    dotColor = "bg-blue opacity-50";
+                                    hoverScale = "hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_var(--color-blue)]";
+                                }
 
-                        let holidayText = lang === 'tr' ? 'Tatil' : 'No Class';
-                        let holidayEmoji = '🌴';
-                        if (wNum === "Week 5") { holidayEmoji = '🍬'; }
-                        else if (wNum === "Week 10") { holidayEmoji = '👷'; }
-                        else if (wNum === "Week 12") { holidayEmoji = '🎤'; }
-                        else if (wNum === "Week 14") { holidayEmoji = '🐮'; }
+                                let textClass = isPast ? "line-through text-gray-500" : "text-text-dark";
 
-                        return (
-                            <div key={week.slug} id={week.slug} className={`reveal relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group ${cardOpacity}`}>
-                                <div className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-4 border-border-dark ${dotColor} absolute left-1 md:left-1/2 -translate-x-1/2 z-10 shadow-[2px_2px_0px_var(--color-border-dark)] ${isPast ? 'grayscale' : ''}`}></div>
+                                let holidayText = lang === 'tr' ? 'Tatil' : 'No Class';
+                                let holidayEmoji = '🌴';
+                                if (wNum === "Week 5") { holidayEmoji = '🍬'; }
+                                else if (wNum === "Week 10") { holidayEmoji = '👷'; }
+                                else if (wNum === "Week 12") { holidayEmoji = '🎤'; }
+                                else if (wNum === "Week 14") { holidayEmoji = '🐮'; }
 
-                                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] ml-16 md:ml-0">
-                                    <Link href={`/weeks/${week.slug}`} className="block relative focus-visible">
-                                        <div className={`bg-white border-4 border-border-dark rounded-brutal p-6 transition-all ${hoverScale}`} style={{ boxShadow: `6px 6px 0px ${cardColor}` }}>
-                                            <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
-                                                <span className={`${badgeColor} font-bold px-3 py-1 rounded-full border-2 border-border-dark text-sm inline-block shadow-[2px_2px_0px_var(--color-border-dark)] !no-underline`}>
-                                                    {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
-                                                </span>
-                                                <span className={`text-sm font-bold ${isMidterm || isFinal || isWorkersDay || isHoliday ? 'bg-transparent' : 'bg-yellow'} px-2 py-1 rounded border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)] ${textClass}`}>
-                                                    {lang === 'tr' && week.frontmatter.date_tr ? week.frontmatter.date_tr : week.frontmatter.date}
-                                                </span>
-                                            </div>
-                                            <h3 className={`text-2xl font-display font-bold mb-2 ${isPast ? 'line-through text-gray-500' : ''}`}>
-                                                {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
-                                                {(isHoliday || isWorkersDay) && (
-                                                    <span className={`ml-2 inline-block px-2 py-0.5 bg-gray-100 text-text-dark text-xs font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
-                                                        {holidayEmoji} {holidayText}
-                                                    </span>
-                                                )}
-                                            </h3>
-                                            <p className={`text-gray-700 mb-6 line-clamp-2 ${isPast ? 'line-through text-gray-400' : ''}`}>
-                                                {lang === 'tr' && week.frontmatter.description_tr ? week.frontmatter.description_tr : week.frontmatter.description}
-                                            </p>
-                                            <div className="inline-flex items-center gap-2 font-bold text-border-dark group-hover:text-pink transition-colors">
-                                                {isHoliday || isWorkersDay ? t("btn_notice" as TranslationKey)
-                                                    : isMidterm || isFinal ? t("btn_project_submit" as TranslationKey)
-                                                        : t("btn_enter")}
-                                            </div>
+                                const isTop = index % 2 === 0;
+
+                                return (
+                                    <div key={week.slug} id={`timeline-${week.slug}`} className={`relative flex flex-col w-[260px] md:w-[280px] shrink-0 ${cardOpacity} h-[420px] md:h-[460px] perspective-1000`}>
+
+                                        <div className={`w-full flex ${isTop ? 'items-end' : 'items-start'} h-[190px] md:h-[210px]`}>
+                                            {isTop && (
+                                                <div className="w-full pb-4 md:pb-6 hover:z-30 relative transition-transform duration-300 transform-gpu hover:-translate-y-1">
+                                                    <Link href={`/weeks/${week.slug}`} className="block relative focus-visible w-full outline-none">
+                                                        <div className={`bg-white border-4 border-border-dark rounded-brutal p-4 md:p-5 transition-all ${hoverScale}`} style={{ boxShadow: `4px 4px 0px ${cardColor}` }}>
+                                                            <div className="flex items-start justify-between mb-2 md:mb-3 flex-wrap gap-1 md:gap-2">
+                                                                <span className={`${badgeColor} font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full border-2 border-border-dark text-[10px] md:text-xs inline-block shadow-[2px_2px_0px_var(--color-border-dark)] !no-underline`}>
+                                                                    {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
+                                                                </span>
+                                                                <span className={`text-[10px] md:text-xs font-bold ${isMidterm || isFinal || isWorkersDay || isHoliday ? 'bg-transparent' : 'bg-yellow'} px-2 py-0.5 md:py-1 rounded border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)] ${textClass}`}>
+                                                                    {lang === 'tr' && week.frontmatter.date_tr ? week.frontmatter.date_tr : week.frontmatter.date}
+                                                                </span>
+                                                            </div>
+                                                            <h3 className={`text-base md:text-lg font-display font-bold mb-1 md:mb-2 leading-tight ${isPast ? 'line-through text-gray-500' : ''}`}>
+                                                                {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
+                                                                {(isHoliday || isWorkersDay) && (
+                                                                    <span className={`ml-1 md:ml-2 inline-block px-1 md:px-2 py-0.5 bg-gray-100 text-text-dark text-[9px] md:text-[10px] font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
+                                                                        {holidayEmoji} {holidayText}
+                                                                    </span>
+                                                                )}
+                                                            </h3>
+                                                            <p className={`text-xs md:text-sm text-gray-700 mb-3 md:mb-4 line-clamp-2 ${isPast ? 'line-through text-gray-400' : ''}`}>
+                                                                {lang === 'tr' && week.frontmatter.description_tr ? week.frontmatter.description_tr : week.frontmatter.description}
+                                                            </p>
+                                                            <div className="inline-flex items-center gap-1 md:gap-2 font-bold text-xs md:text-sm text-border-dark transition-colors">
+                                                                {isHoliday || isWorkersDay ? t("btn_notice" as TranslationKey)
+                                                                    : isMidterm || isFinal ? t("btn_project_submit" as TranslationKey)
+                                                                        : t("btn_enter")}
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )}
                                         </div>
-                                    </Link>
-                                </div>
-                            </div>
-                        )
-                    })}
+
+                                        <div className="relative h-[40px] flex items-center justify-center">
+                                            {/* Connecting vertical dashed line for top items */}
+                                            {isTop && <div className="absolute top-0 w-1 h-1/2 border-l-4 border-dotted border-border-dark opacity-50 z-0"></div>}
+                                            {/* Connector dot */}
+                                            <div className={`w-8 h-8 rounded-full border-4 border-border-dark ${dotColor} z-10 shadow-[2px_2px_0px_var(--color-border-dark)] ${isPast ? 'grayscale' : ''}`}></div>
+                                            {/* Connecting vertical dashed line for bottom items */}
+                                            {!isTop && <div className="absolute bottom-0 w-1 h-1/2 border-l-4 border-dotted border-border-dark opacity-50 z-0"></div>}
+                                        </div>
+
+                                        <div className={`w-full flex ${!isTop ? 'items-start' : 'items-end'} h-[190px] md:h-[210px]`}>
+                                            {!isTop && (
+                                                <div className="w-full pt-4 md:pt-6 hover:z-30 relative transition-transform duration-300 transform-gpu hover:-translate-y-1">
+                                                    <Link href={`/weeks/${week.slug}`} className="block relative focus-visible w-full outline-none">
+                                                        <div className={`bg-white border-4 border-border-dark rounded-brutal p-4 md:p-5 transition-all ${hoverScale}`} style={{ boxShadow: `4px 4px 0px ${cardColor}` }}>
+                                                            <div className="flex items-start justify-between mb-2 md:mb-3 flex-wrap gap-1 md:gap-2">
+                                                                <span className={`${badgeColor} font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full border-2 border-border-dark text-[10px] md:text-xs inline-block shadow-[2px_2px_0px_var(--color-border-dark)] !no-underline`}>
+                                                                    {lang === 'tr' && week.frontmatter.week_tr ? week.frontmatter.week_tr : week.frontmatter.week}
+                                                                </span>
+                                                                <span className={`text-[10px] md:text-xs font-bold ${isMidterm || isFinal || isWorkersDay || isHoliday ? 'bg-transparent' : 'bg-yellow'} px-2 py-0.5 md:py-1 rounded border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)] ${textClass}`}>
+                                                                    {lang === 'tr' && week.frontmatter.date_tr ? week.frontmatter.date_tr : week.frontmatter.date}
+                                                                </span>
+                                                            </div>
+                                                            <h3 className={`text-base md:text-lg font-display font-bold mb-1 md:mb-2 leading-tight ${isPast ? 'line-through text-gray-500' : ''}`}>
+                                                                {lang === 'tr' && week.frontmatter.title_tr ? week.frontmatter.title_tr : week.frontmatter.title}
+                                                                {(isHoliday || isWorkersDay) && (
+                                                                    <span className={`ml-1 md:ml-2 inline-block px-1 md:px-2 py-0.5 bg-gray-100 text-text-dark text-[9px] md:text-[10px] font-bold rounded border-2 border-border-dark shadow-[1px_1px_0px_var(--color-border-dark)] align-middle ${isPast ? '' : '!no-underline'}`}>
+                                                                        {holidayEmoji} {holidayText}
+                                                                    </span>
+                                                                )}
+                                                            </h3>
+                                                            <p className={`text-xs md:text-sm text-gray-700 mb-3 md:mb-4 line-clamp-2 ${isPast ? 'line-through text-gray-400' : ''}`}>
+                                                                {lang === 'tr' && week.frontmatter.description_tr ? week.frontmatter.description_tr : week.frontmatter.description}
+                                                            </p>
+                                                            <div className="inline-flex items-center gap-1 md:gap-2 font-bold text-xs md:text-sm text-border-dark transition-colors">
+                                                                {isHoliday || isWorkersDay ? t("btn_notice" as TranslationKey)
+                                                                    : isMidterm || isFinal ? t("btn_project_submit" as TranslationKey)
+                                                                        : t("btn_enter")}
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                    </div>
+                                )
+                            })}
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
