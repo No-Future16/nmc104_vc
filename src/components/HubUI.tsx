@@ -341,7 +341,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                     </div>
 
                     {/* Horizontal scroll container */}
-                    <div className="relative w-full h-[420px] md:h-[460px] shrink-0">
+                    <div className="relative w-full h-[450px] md:h-[500px] shrink-0">
                         <motion.div
                             ref={contentRef}
                             style={{ x }}
@@ -450,7 +450,7 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
 
                                         <div className={`w-full flex ${!isTop ? 'items-start' : 'items-end'} h-[190px] md:h-[210px]`}>
                                             {!isTop && (
-                                                <div className="w-full pt-4 md:pt-6 hover:z-30 relative transition-transform duration-300 transform-gpu hover:-translate-y-1">
+                                                <div className="w-full pt-4 md:pt-6 pb-2 md:pb-4 hover:z-30 relative transition-transform duration-300 transform-gpu hover:-translate-y-1">
                                                     <Link href={`/weeks/${week.slug}`} className="block relative focus-visible w-full outline-none">
                                                         <div className={`bg-white border-4 border-border-dark rounded-brutal p-4 md:p-5 transition-all ${hoverScale}`} style={{ boxShadow: `4px 4px 0px ${cardColor}` }}>
                                                             <div className="flex items-start justify-between mb-2 md:mb-3 flex-wrap gap-1 md:gap-2">
