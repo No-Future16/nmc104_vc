@@ -334,11 +334,10 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
             <section id="timeline" ref={targetRef} className="relative bg-bg-light" style={{ height: scrollRange > 0 ? `calc(100vh + ${scrollRange}px)` : '300vh' }}>
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-10 w-full">
                     {/* Header that stays fixed while scrolling */}
-                    <div className="w-full px-6 flex flex-col items-center text-center z-20 shrink-0 mb-6 md:mb-10">
-                        <h2 className="text-3xl md:text-5xl font-display font-black mb-2 md:mb-4">
+                    <div className="w-full px-6 flex flex-col items-center text-center z-20 shrink-0 mb-4 md:mb-8">
+                        <h2 className="text-3xl md:text-5xl font-display font-black">
                             {t("roadmap_title")}
                         </h2>
-                        <p className="text-lg md:text-xl text-gray-700 font-medium max-w-2xl">{t("roadmap_desc")}</p>
                     </div>
 
                     {/* Horizontal scroll container */}
