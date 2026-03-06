@@ -203,7 +203,12 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                         {/* New Announcement (Open by default) */}
                         <details className="group [&_summary::-webkit-details-marker]:hidden border-b-2 border-border-dark" open>
                             <summary className="flex items-center justify-between p-6 cursor-pointer font-display font-bold text-xl hover:bg-purple/10 active:rotate-1 active:scale-[0.99] transition-all duration-300">
-                                {t("announcement2_title" as TranslationKey)}
+                                <div className="flex items-center gap-3">
+                                    {t("announcement2_title" as TranslationKey)}
+                                    <span className="bg-lime text-text-dark text-xs px-2 py-1 rounded-full border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)] animate-bounce">
+                                        {lang === 'tr' ? 'YENİ' : 'NEW'}
+                                    </span>
+                                </div>
                                 <span className="text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                             </summary>
                             <div

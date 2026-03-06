@@ -67,6 +67,7 @@ export const translations = {
 <p class="mb-4"><strong>Step 2:</strong> We will briefly analyze these posters together to identify <em>why</em> they fail visually according to the Gestalt rules.</p>
 <p class="mb-4"><strong>Step 3:</strong> Open Figma or Canva. You will redesign your chosen poster from scratch by actively applying the Gestalt principles (Proximity, Similarity, Closure, Continuity, and Figure-Ground) we discussed.</p>
 <p class="mb-4">Let's get designing!</p>
+<p class="mt-6"><a href="/weeks/week-2" class="inline-block px-4 py-2 bg-pink text-white font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] hover:translate-y-1 hover:shadow-[2px_2px_0px_var(--color-border-dark)] transition-all">Go to Week 2 Module →</a></p>
         `,
 
         schedule_title: "15-Week Overview",
@@ -175,6 +176,7 @@ export const translations = {
 <p class="mb-4"><strong>2. Adım:</strong> Bu afişlerin görsel olarak <em>neden</em> başarısız olduğunu Gestalt kuralları çerçevesinde birlikte analiz edeceğiz.</p>
 <p class="mb-4"><strong>3. Adım:</strong> Figma veya Canva'yı açın. Öğrendiğimiz Gestalt prensiplerini (Yakınlık, Benzerlik, Tamamlama, Süreklilik ve Şekil-Zemin) uygulayarak, seçtiğiniz afişi sıfırdan yeniden tasarlayacaksınız.</p>
 <p class="mb-4">Hadi tasarıma başlayalım!</p>
+<p class="mt-6"><a href="/weeks/week-2" class="inline-block px-4 py-2 bg-pink text-white font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] hover:translate-y-1 hover:shadow-[2px_2px_0px_var(--color-border-dark)] transition-all">2. Hafta Modülüne Git →</a></p>
         `,
 
         schedule_title: "15 Haftalık Dönem Takvimi",
