@@ -59,6 +59,14 @@ export const translations = {
 <p class="mb-6">Looking forward to a great semester together!</p>
 <p>Best regards,<br/><strong>Semih</strong></p>
         `,
+        announcement2_title: "Week 2: In-Class Poster Redesign",
+        announcement2_desc: `
+<p class="mb-4">Hello Designers,</p>
+<p class="mb-4">For our Week 2 in-class application, we will be putting Gestalt principles into practice through a <strong>Poster Redesign Challenge</strong>.</p>
+<p class="mb-4"><strong>Your task before class:</strong> Find a "bad" university club poster or event flyer (one that is visually confusing, lacks hierarchy, or ignores alignment/proximity) and bring it with you.</p>
+<p class="mb-4">During our session, we will analyze these posters together to identify <em>why</em> they fail visually. Then, using Figma or Canva, you will redesign your chosen poster from scratch by applying the Gestalt principles (Proximity, Similarity, Closure, Continuity, and Figure-Ground) we discussed.</p>
+<p class="mb-4">See you in class ready to design!</p>
+        `,
 
         schedule_title: "15-Week Overview",
         th_week: "Week",
@@ -157,6 +165,14 @@ export const translations = {
 <p class="mb-4">Lütfen bu hafta Course Hub'ı incelemek ve 1. Hafta materyallerini okumak için biraz zaman ayırın.</p>
 <p class="mb-6">Birlikte harika bir dönem geçirmek dileğiyle!</p>
 <p>Sevgiler,<br/><strong>Semih</strong></p>
+        `,
+        announcement2_title: "2. Hafta: Sınıf İçi Afiş Yeniden Tasarımı",
+        announcement2_desc: `
+<p class="mb-4">Merhaba Tasarımcılar,</p>
+<p class="mb-4">2. Hafta sınıf içi uygulamamızda, Gestalt prensiplerini <strong>Afiş Yeniden Tasarım Görevi</strong> ile pratiğe dökeceğiz.</p>
+<p class="mb-4"><strong>Dersten önceki göreviniz:</strong> "Kötü" tasarlanmış bir üniversite kulübü afişi veya etkinlik el ilanı bulun (görsel olarak kafa karıştırıcı, hiyerarşiden yoksun veya hizalama/yakınlık kurallarını ihlal eden) ve derse getirin.</p>
+<p class="mb-4">Dersimizde, bu afişlerin görsel olarak <em>neden</em> başarısız olduğunu belirlemek için onları birlikte analiz edeceğiz. Ardından, Figma veya Canva kullanarak, öğrendiğimiz Gestalt prensiplerini (Yakınlık, Benzerlik, Tamamlama, Süreklilik ve Şekil-Zemin) uygulayarak seçtiğiniz afişi sıfırdan yeniden tasarlayacaksınız.</p>
+<p class="mb-4">Derste tasarım yapmaya hazır görüşmek üzere!</p>
         `,
 
         schedule_title: "15 Haftalık Dönem Takvimi",
