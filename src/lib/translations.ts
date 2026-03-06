@@ -62,10 +62,11 @@ export const translations = {
         announcement2_title: "Week 2: In-Class Poster Redesign",
         announcement2_desc: `
 <p class="mb-4">Hello Designers,</p>
-<p class="mb-4">For our Week 2 in-class application, we will be putting Gestalt principles into practice through a <strong>Poster Redesign Challenge</strong>.</p>
-<p class="mb-4"><strong>Your task before class:</strong> Find a "bad" university club poster or event flyer (one that is visually confusing, lacks hierarchy, or ignores alignment/proximity) and bring it with you.</p>
-<p class="mb-4">During our session, we will analyze these posters together to identify <em>why</em> they fail visually. Then, using Figma or Canva, you will redesign your chosen poster from scratch by applying the Gestalt principles (Proximity, Similarity, Closure, Continuity, and Figure-Ground) we discussed.</p>
-<p class="mb-4">See you in class ready to design!</p>
+<p class="mb-4">For our Week 2 in-class application, we are putting Gestalt principles into practice through a <strong>Poster Redesign Challenge</strong>.</p>
+<p class="mb-4"><strong>Step 1:</strong> Find a "bad" university club poster or event flyer online or around campus right now. Look for visually confusing layouts, poor hierarchy, or ignored alignment/proximity formats.</p>
+<p class="mb-4"><strong>Step 2:</strong> We will briefly analyze these posters together to identify <em>why</em> they fail visually according to the Gestalt rules.</p>
+<p class="mb-4"><strong>Step 3:</strong> Open Figma or Canva. You will redesign your chosen poster from scratch by actively applying the Gestalt principles (Proximity, Similarity, Closure, Continuity, and Figure-Ground) we discussed.</p>
+<p class="mb-4">Let's get designing!</p>
         `,
 
         schedule_title: "15-Week Overview",
@@ -169,10 +170,11 @@ export const translations = {
         announcement2_title: "2. Hafta: Sınıf İçi Afiş Yeniden Tasarımı",
         announcement2_desc: `
 <p class="mb-4">Merhaba Tasarımcılar,</p>
-<p class="mb-4">2. Hafta sınıf içi uygulamamızda, Gestalt prensiplerini <strong>Afiş Yeniden Tasarım Görevi</strong> ile pratiğe dökeceğiz.</p>
-<p class="mb-4"><strong>Dersten önceki göreviniz:</strong> "Kötü" tasarlanmış bir üniversite kulübü afişi veya etkinlik el ilanı bulun (görsel olarak kafa karıştırıcı, hiyerarşiden yoksun veya hizalama/yakınlık kurallarını ihlal eden) ve derse getirin.</p>
-<p class="mb-4">Dersimizde, bu afişlerin görsel olarak <em>neden</em> başarısız olduğunu belirlemek için onları birlikte analiz edeceğiz. Ardından, Figma veya Canva kullanarak, öğrendiğimiz Gestalt prensiplerini (Yakınlık, Benzerlik, Tamamlama, Süreklilik ve Şekil-Zemin) uygulayarak seçtiğiniz afişi sıfırdan yeniden tasarlayacaksınız.</p>
-<p class="mb-4">Derste tasarım yapmaya hazır görüşmek üzere!</p>
+<p class="mb-4">2. Hafta sınıf içi uygulamamızda, Gestalt prensiplerini <strong>Afiş Yeniden Tasarım Görevi</strong> ile pratiğe döküyoruz.</p>
+<p class="mb-4"><strong>1. Adım:</strong> İnternette veya kampüste "kötü" tasarlanmış bir etkinlik el ilanı bulun. Görsel olarak kafa karıştırıcı, hiyerarşiden yoksun veya hizalama/yakınlık kurallarını ihlal eden örnekler arayın.</p>
+<p class="mb-4"><strong>2. Adım:</strong> Bu afişlerin görsel olarak <em>neden</em> başarısız olduğunu Gestalt kuralları çerçevesinde birlikte analiz edeceğiz.</p>
+<p class="mb-4"><strong>3. Adım:</strong> Figma veya Canva'yı açın. Öğrendiğimiz Gestalt prensiplerini (Yakınlık, Benzerlik, Tamamlama, Süreklilik ve Şekil-Zemin) uygulayarak, seçtiğiniz afişi sıfırdan yeniden tasarlayacaksınız.</p>
+<p class="mb-4">Hadi tasarıma başlayalım!</p>
         `,
 
         schedule_title: "15 Haftalık Dönem Takvimi",
