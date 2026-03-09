@@ -200,15 +200,27 @@ export default function HubUI({ weeks, tutorials }: { weeks: any[], tutorials: a
                         📢 {t("announcement_title" as TranslationKey)}
                     </h2>
                     <div className="bg-white border-4 border-border-dark rounded-brutal shadow-[6px_6px_0px_var(--color-purple)] flex flex-col gap-0">
-                        {/* New Announcement (Open by default) */}
+                        {/* Week 3 Announcement (Open by default) */}
                         <details className="group [&_summary::-webkit-details-marker]:hidden border-b-2 border-border-dark" open>
                             <summary className="flex items-center justify-between p-6 cursor-pointer font-display font-bold text-xl hover:bg-purple/10 active:rotate-1 active:scale-[0.99] transition-all duration-300">
                                 <div className="flex items-center gap-3">
-                                    {t("announcement2_title" as TranslationKey)}
+                                    {t("announcement3_title" as TranslationKey)}
                                     <span className="bg-lime text-text-dark text-xs px-2 py-1 rounded-full border-2 border-border-dark shadow-[2px_2px_0px_var(--color-border-dark)] animate-bounce">
                                         {lang === 'tr' ? 'YENİ' : 'NEW'}
                                     </span>
                                 </div>
+                                <span className="text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+                            </summary>
+                            <div
+                                className="p-6 pt-4 text-lg font-medium text-gray-700 text-left border-t-2 border-dashed border-border-dark opacity-0 group-open:opacity-100 transition-opacity duration-300"
+                                dangerouslySetInnerHTML={tHtml("announcement3_desc" as TranslationKey)}
+                            />
+                        </details>
+
+                        {/* Week 2 Announcement */}
+                        <details className="group [&_summary::-webkit-details-marker]:hidden border-b-2 border-border-dark">
+                            <summary className="flex items-center justify-between p-6 cursor-pointer font-display font-bold text-xl hover:bg-purple/10 active:rotate-1 active:scale-[0.99] transition-all duration-300">
+                                {t("announcement2_title" as TranslationKey)}
                                 <span className="text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                             </summary>
                             <div

@@ -69,6 +69,23 @@ export const translations = {
 <p class="mb-4">Let's get designing!</p>
 <p class="mt-6"><a href="/weeks/week-2" class="inline-block px-4 py-2 bg-pink text-white font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] hover:translate-y-1 hover:shadow-[2px_2px_0px_var(--color-border-dark)] transition-all">Go to Week 2 Module →</a></p>
         `,
+        announcement3_title: "Week 3: Pre-Class Poster Recreation Activity",
+        announcement3_desc: `
+<p class="mb-4">Hello Designers,</p>
+<p class="mb-4">Before coming to our Week 3 class, I expect you to complete a small but important practice exercise. Please select <strong>only one</strong> of the 5 different Instagram poster designs linked below.</p>
+<div class="mb-4">
+    <ul class="list-disc list-inside space-y-2">
+        <li><a href="https://www.instagram.com/p/DVYk2x7AqW9/?igsh=MTI3a2tjYzNjc3plbw==" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Poster Option 1</a></li>
+        <li><a href="https://www.instagram.com/p/DTdEjleiIAW/?igsh=MWcwcGpoZzhyMDB4aw==" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Poster Option 2</a></li>
+        <li><a href="https://www.instagram.com/p/DRhRLu3iDxv/?igsh=NTNxc25tcGhtMHQ4" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Poster Option 3</a></li>
+        <li><a href="https://www.instagram.com/p/DROtbtqjOzw/?igsh=MWE2bjBkOXl0OWV2eQ==" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Poster Option 4</a></li>
+        <li><a href="https://www.instagram.com/p/DR4hlR-iHCh/?igsh=NTZuOHhhenFsamFi" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Poster Option 5</a></li>
+    </ul>
+</div>
+<p class="mb-4">Your task is to re-create your chosen poster <strong>exactly as it is</strong>. You can use any tool you like for this—Canva, Figma, Photoshop, or Illustrator. The choice of tool is entirely up to you.</p>
+<p class="mb-4">👉 We will be checking your recreated designs one by one during the class, so make sure your work is ready before you arrive.</p>
+<p class="mt-6"><a href="/weeks/week-3" class="inline-block px-4 py-2 bg-pink text-white font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] hover:translate-y-1 hover:shadow-[2px_2px_0px_var(--color-border-dark)] transition-all">Go to Week 3 Module →</a></p>
+        `,
 
         schedule_title: "15-Week Overview",
         th_week: "Week",
@@ -177,6 +194,23 @@ export const translations = {
 <p class="mb-4"><strong>3. Adım:</strong> Figma veya Canva'yı açın. Öğrendiğimiz Gestalt prensiplerini (Yakınlık, Benzerlik, Tamamlama, Süreklilik ve Şekil-Zemin) uygulayarak, seçtiğiniz afişi sıfırdan yeniden tasarlayacaksınız.</p>
 <p class="mb-4">Hadi tasarıma başlayalım!</p>
 <p class="mt-6"><a href="/weeks/week-2" class="inline-block px-4 py-2 bg-pink text-white font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] hover:translate-y-1 hover:shadow-[2px_2px_0px_var(--color-border-dark)] transition-all">2. Hafta Modülüne Git →</a></p>
+        `,
+        announcement3_title: "3. Hafta: Sınıf Öncesi Afiş Re-create Etkinliği",
+        announcement3_desc: `
+<p class="mb-4">Merhaba Tasarımcılar,</p>
+<p class="mb-4">3. haftaya gelmeden önce sizden küçük ama önemli bir pratik yapmanızı bekliyorum. Aşağıda paylaştığım 5 farklı Instagram afiş tasarımından <strong>sadece birini</strong> seçin.</p>
+<div class="mb-4">
+    <ul class="list-disc list-inside space-y-2">
+        <li><a href="https://www.instagram.com/p/DVYk2x7AqW9/?igsh=MTI3a2tjYzNjc3plbw==" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Afiş Seçeneği 1</a></li>
+        <li><a href="https://www.instagram.com/p/DTdEjleiIAW/?igsh=MWcwcGpoZzhyMDB4aw==" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Afiş Seçeneği 2</a></li>
+        <li><a href="https://www.instagram.com/p/DRhRLu3iDxv/?igsh=NTNxc25tcGhtMHQ4" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Afiş Seçeneği 3</a></li>
+        <li><a href="https://www.instagram.com/p/DROtbtqjOzw/?igsh=MWE2bjBkOXl0OWV2eQ==" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Afiş Seçeneği 4</a></li>
+        <li><a href="https://www.instagram.com/p/DR4hlR-iHCh/?igsh=NTZuOHhhenFsamFi" target="_blank" class="text-pink underline hover:text-purple transition-colors font-bold">Afiş Seçeneği 5</a></li>
+    </ul>
+</div>
+<p class="mb-4">Göreviniz: Seçtiğiniz afişin <strong>birebir aynısını</strong> kendi başınıza yeniden oluşturmak (re-create). Bu çalışmayı yaparken Canva, Figma, Photoshop veya Illustrator gibi dilediğiniz herhangi bir aracı kullanabilirsiniz, araç seçimi tamamen size ait.</p>
+<p class="mb-4">👉 Yaptığınız çalışmaları derste tek tek kontrol edeceğiz, bu yüzden derse gelirken çalışmanızın hazır olduğundan emin olun.</p>
+<p class="mt-6"><a href="/weeks/week-3" class="inline-block px-4 py-2 bg-pink text-white font-bold rounded-brutal border-2 border-border-dark shadow-[4px_4px_0px_var(--color-border-dark)] hover:translate-y-1 hover:shadow-[2px_2px_0px_var(--color-border-dark)] transition-all">3. Hafta Modülüne Git →</a></p>
         `,
 
         schedule_title: "15 Haftalık Dönem Takvimi",
